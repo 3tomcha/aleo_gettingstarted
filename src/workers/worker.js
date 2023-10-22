@@ -41,7 +41,7 @@ async function deployProgram(program) {
 
   // Use existing account with funds
   const account = new Account({
-    privateKey: "user1PrivateKey",
+    privateKey: import.meta.env.PRIVATE_KEY,
   });
 
   const recordProvider = new NetworkRecordProvider(account, networkClient);
@@ -62,7 +62,7 @@ async function deployProgram(program) {
   const tx_id = await programManager.deploy(program, fee);
 
   // Optional: Pass in fee record manually to avoid long scan times
-  // const feeRecord = "{  owner: aleo1xxx...xxx.private,  microcredits: 2000000u64.private,  _nonce: 123...789group.public}";
+  // const feeRecord = `{  owner: "aleo1wrat74zwpxnrpjdchnnjrzm2rre8m6talqycyhddx4vecn7hucps7v72l2"},  microcredits: 50,  _nonce: }`;
   // const tx_id = await programManager.deploy(program, fee, undefined, feeRecord);
 
   return tx_id;
